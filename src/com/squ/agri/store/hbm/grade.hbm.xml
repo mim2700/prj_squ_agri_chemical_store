@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class
+        name="com.squ.agri.store.bo.Grade"
+        table="M_GRADE">
+
+        <id name="gradeId"  column="G_ID">
+           <generator class="assigned"/>
+        </id>
+        
+        <property
+            name="gradeNumber"
+            column="G_NUMBER"/>
+
+        <property
+            name="gradeName"
+            column="G_NAME"/>
+
+        <property
+            name="gradeDescription"
+            column="G_DESCRIPTION"/> 
+            
+         <property
+            name="gradeActive"
+            column="G_ACTIVE"/> 
+
+    </class>
+
+</hibernate-mapping>

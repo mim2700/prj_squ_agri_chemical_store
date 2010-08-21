@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="com.squ.agri.store.bo.RequestItems"  >   
+  <id name="itemCode" >   
+  <!-- generator class="assigned" /-->   
+  </id>
+    <property name="itemCode" insert="false" update="false"/>
+    <property name="itemName" />
+    <property name="itemQuantity" />
+</class>  
+
+<!--             Stored Procedures                  -->
+<sql-query name="sp_lot_inHouse_request_add_lot" callable="true">
+		<return-scalar column="LOT_ID"/>
+		{ ? = call FUNC_LOT_ALLOCATION_ADD_LOT(:reqDeptId,:approveDeptId) }
+</sql-query>
+<sql-query name="sp_lot_inHouse_request_add_items" callable="true">
+		<return-scalar column="LOT_ID"/>
+		{ ? = call FUNC_LOT_ALLOCATION_ADD_ITEMS(:lotId,:visionItemId,:qtyAvilable,:qtyReq) }
+</sql-query>
+<sql-query name="sp_lot_inHouse_requested_items" callable="true">
+		<return-scalar column="LOT_ID"/>
+		<return-scalar column="VISION_ITEM_ID"/>
+		<return-scalar column="VISION_ITEM_NAME"/>
+		<return-scalar column="QTY_REQUESTED"/>
+		<return-scalar column="DEPT_ID"/>
+		{ ? = call FUNC_LOT_ALLOCATION_REQUESTED() }
+</sql-query>
+<sql-query name="sp_lot_inHouse_avialable_items" callable="true">
+		<return-scalar column="VISION_ITEM_ID"/>
+		<return-scalar column="VISION_ITEM_NAME"/>
+		<return-scalar column="SUB_ITEM_ID"/>
+		<return-scalar column="MANU_DATE"/>
+		<return-scalar column="EXPIRY_DATE"/>
+		<return-scalar column="RECEIVED_QTY"/>
+		<return-scalar column="CONSUMED_QTY"/>
+		<return-scalar column="AVIALABLE_QTY"/>
+		{ ? = call FUNC_LOT_ALLOCATION_AVILABLE(:deptId) }
+</sql-query>
+<sql-query name="sp_lot_inHouse_issue_items" callable="true">
+		<return-scalar column="LOT_ID"/>
+		{ ? = call FUNC_LOT_ALLOCATION_ISSUE(:lotId,:subItemId,:subItemQty,:deptId) }
+</sql-query>
+<sql-query name="sp_lot_inHouse_accept_items_list" callable="true">
+		<return-scalar column="LOT_ID"/>
+		<return-scalar column="ITEM_ID"/>
+		<return-scalar column="ITEM_NAME"/>
+		<return-scalar column="SUB_ITEM_ID"/>
+		<return-scalar column="SUB_ITEM_QTY"/>
+		<return-scalar column="REQUEST_DATE"/>
+		<return-scalar column="APPROVE_DATE"/>
+		{ ? = call FUNC_LOT_ALLOCATION_ACCEPT_LST(:deptId) }
+</sql-query>
+<sql-query name="sp_lot_inHouse_accepted_items" callable="true">
+		<return-scalar column="DEPT_ID"/>
+		{ ? = call FUNC_LOT_ALLOCATION_ACCEPTED(:deptId,:lotId,:subItemId,:subItemQty) }
+</sql-query>
+</hibernate-mapping>

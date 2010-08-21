@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_dept_central_store" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<style name="Title" isDefault="false" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" isDefault="false" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" isDefault="false" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" isDefault="false" fontName="Arial" fontSize="12"/>
+	<style name="Row" isDefault="false" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[]]></conditionExpression>
+			<style isDefault="false" style="Row" backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT A.VISION_ITEM_ID,A.VISION_ITEM_NAME,A.I_ITEM_ID AS SUB_ITEM_ID,
+	TO_CHAR(A.I_MANU_DATE,'YYYY-MM-DD') AS MANU_DATE,TO_CHAR(A.I_EXPIRY_DATE,'YYYY-MM-DD') AS EXPIRY_DATE,
+	NVL(A.ACS_QTY_RECEIVED,0) AS RECEIVED_QTY ,
+	NVL(B.ACS_QTY_RECEIVED,0) AS CONSUMED_QTY ,
+	(NVL(A.ACS_QTY_RECEIVED,0) - NVL(B.ACS_QTY_RECEIVED,0)) AS AVIALABLE_QTY
+	FROM 
+	
+	(
+	SELECT MT_PRODUCT.VISION_ITEM_ID,MT_PRODUCT.VISION_ITEM_NAME,MT_ITEM.I_ITEM_ID,
+	MT_ITEM.I_MANU_DATE,MT_ITEM.I_EXPIRY_DATE,
+	T_AGRI_CENTRAL_STORE.ACS_QTY_RECEIVED,T_AGRI_CENTRAL_STORE.ACS_ACTION
+	FROM T_AGRI_CENTRAL_STORE,MT_ITEM,MT_PRODUCT
+	WHERE T_AGRI_CENTRAL_STORE.ACS_ITEM_ID=MT_ITEM.I_ITEM_ID
+	AND MT_PRODUCT.VISION_ITEM_ID = MT_ITEM.P_VISION_ITEM_ID
+	AND T_AGRI_CENTRAL_STORE.ACS_ACTION='R'
+	AND T_AGRI_CENTRAL_STORE.ACS_VISION_DEPT_ID='2205'
+	) A
+	
+	LEFT OUTER JOIN
+	
+	(
+	SELECT MT_PRODUCT.VISION_ITEM_ID,MT_PRODUCT.VISION_ITEM_NAME,MT_ITEM.I_ITEM_ID,
+	MT_ITEM.I_MANU_DATE,MT_ITEM.I_EXPIRY_DATE,
+	T_AGRI_CENTRAL_STORE.ACS_QTY_RECEIVED,T_AGRI_CENTRAL_STORE.ACS_ACTION
+	FROM T_AGRI_CENTRAL_STORE,MT_ITEM,MT_PRODUCT
+	WHERE T_AGRI_CENTRAL_STORE.ACS_ITEM_ID=MT_ITEM.I_ITEM_ID
+	AND MT_PRODUCT.VISION_ITEM_ID = MT_ITEM.P_VISION_ITEM_ID
+	AND T_AGRI_CENTRAL_STORE.ACS_ACTION='C'
+	AND T_AGRI_CENTRAL_STORE.ACS_VISION_DEPT_ID='2205'
+	) B
+	
+	ON 
+	 A.I_ITEM_ID = B.I_ITEM_ID 
+	 AND A.VISION_ITEM_ID = B.VISION_ITEM_ID]]>
+	</queryString>
+	<field name="VISION_ITEM_ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="VISION_ITEM_NAME" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SUB_ITEM_ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MANU_DATE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EXPIRY_DATE" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RECEIVED_QTY" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CONSUMED_QTY" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AVIALABLE_QTY" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<group name="VISION_ITEM_ID">
+		<groupExpression><![CDATA[$F{VISION_ITEM_ID}]]></groupExpression>
+		<groupHeader>
+			<band height="37">
+				<frame>
+					<reportElement mode="Opaque" x="-18" y="7" width="597" height="24" forecolor="#B89F7D" backcolor="#F2EBDF"/>
+					<rectangle>
+						<reportElement mode="Opaque" x="21" y="0" width="10" height="24" backcolor="#736343"/>
+						<graphicElement>
+							<pen lineWidth="0.0"/>
+						</graphicElement>
+					</rectangle>
+					<textField>
+						<reportElement style="SubTitle" x="33" y="0" width="204" height="24" forecolor="#736343"/>
+						<textElement>
+							<font size="14" isBold="true"/>
+						</textElement>
+						<textFieldExpression class="java.lang.String"><![CDATA[$F{VISION_ITEM_ID}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="263" y="7" width="292" height="24"/>
+					<textElement>
+						<font size="16" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{VISION_ITEM_NAME}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="166" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="205" y="58" width="167" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isBold="false" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Department Item Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="219" y="94" width="109" height="22"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Central Store]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="116" width="383" height="42"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[This report provides a view of the Item avialable consumed and requested at Central Store on behalf of a department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="194" y="0" width="221" height="28"/>
+				<textElement>
+					<font size="18" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Sultan Qaboos University]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="127" y="28" width="347" height="30"/>
+				<textElement>
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[College of Agriculture & Marine Sciences]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="11" y="0" width="79" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[SUB ITEM ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="100" y="0" width="79" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[MANU DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="189" y="0" width="81" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[EXPIRY DATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="283" y="0" width="79" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[RECEIVED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="372" y="0" width="79" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[CONSUMED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="474" y="0" width="79" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[AVIALABLE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="14" y="0" width="79" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{SUB_ITEM_ID}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd-MMM-yy">
+					<reportElement style="Detail" x="104" y="0" width="79" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{MANU_DATE}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="194" y="0" width="79" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{EXPIRY_DATE}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="290" y="0" width="79" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{RECEIVED_QTY}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="393" y="0" width="79" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{CONSUMED_QTY}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="496" y="0" width="56" height="15"/>
+					<textElement/>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{AVIALABLE_QTY}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

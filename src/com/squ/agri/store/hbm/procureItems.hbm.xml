@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="com.squ.agri.store.bo.Procurements"  >   
+  <id name="procureId" >   
+  <!-- generator class="assigned" /-->   
+  </id>
+    <property name="procureId" insert="false" update="false"/>
+    <property name="prnNo" />
+    <property name="prnDate" />
+    <property name="dtInfoReceived" />
+    <property name="deptSourceId" />
+    <property name="deptDestId" />
+    <property name="deptId"/>
+ <!--    
+    <many-to-one 
+    	name="department" 
+    	class="com.squ.agri.store.bo.Department"
+    	lazy="false"
+    	not-null="true">
+    </many-to-one>	
+ -->    
+    
+<loader query-ref="procureInvite"/>
+
+</class>  
+
+<!--             Stored Procedures                  -->
+<sql-query name="sp_procureItems" callable="true">
+		<return-scalar column="PI_PROCURE_ITEM_ID"/>
+		{ ? = call FUNC_PROCURE_ITEMS2(:prnNo,:lpoNo,:grnNo,:supplierId,:deptSourceId,:deptDestId) }
+</sql-query>
+
+<sql-query name="sp_receiveProcureInvitation" callable="true">
+		<return-scalar column="IID_PROCURE_ITEM_ID"/>
+		{ ? = call FUN_PROC_RECEIVED_INVITATION(:procureNo) }
+</sql-query>
+<sql-query name="sp_procureStore" callable="true">
+		<return-scalar column="PI_PROCURE_ITEM_ID"/>
+		{ ? = call FUNC_PROCURE_ITEMS_STORE(:procureId,:deptId,:visionItemId,:csItemQty,:dsItemQty,:mutipleSubItems,:measurment,:safety,:type) }
+</sql-query>
+
+<!--             Stored Procedures    - In House Request Materials               -->
+<sql-query name="sp_inHouseRequestItems" callable="true">
+		<return-scalar column="itemCode"/>
+		<return-scalar column="itemName"/>
+		<return-scalar column="itemQuantity"/>
+		{ ? = call FUN_REQ_ITEMS (:deptId) }
+</sql-query>
+
+
+<!--             Stored Procedures    - In House Consume Materials List              -->
+<sql-query name="sp_inHouseItemsList" callable="true">
+		<return-scalar column="itemCode"/>
+		<return-scalar column="itemName"/>
+		<return-scalar column="itemQuantity"/>
+		<return-scalar column="mutipleItems"/>
+		{ ? = call FUN_AVAILABLE_ITEMS_LIST (:deptId,:value,:searchBy,:searchFrom) }
+</sql-query>
+
+<!--             Stored Procedures    - In House Consume Materials List              -->
+<sql-query name="sp_product" callable="true">
+		<return-scalar column="itemCode"/>
+		<return-scalar column="itemType"/>
+		<return-scalar column="itemName"/>
+		<return-scalar column="multipleItems"/>
+		<return-scalar column="itemSafety"/>
+		<return-scalar column="itemMeasurment"/>
+		{ ? = call FUN_PRODUCT (:itemCode) }
+</sql-query>
+
+<sql-query name="procureInvite">
+<return alias="pro" class="com.squ.agri.store.bo.Procurements" lock-mode="upgrade"/>
+	SELECT PI_PROCURE_ITEM_ID AS {pro.procureId} ,
+	PI_VISION_PURCHASE_REQ_NO AS {pro.prnNo} ,PI_PRN_DATE AS {pro.prnDate},
+	IID_INFO_DATE_SEND AS {pro.dtInfoReceived},IID_VISION_SOURCE_DEPT AS {pro.deptSourceId},
+	IID_VISION_SOURCE_DEPT AS {pro.deptId},
+	IID_VISION_DESTINATION_DEPT AS {pro.deptDestId}
+	FROM PROCURE_ITEMS,INFORM_ITEM_DEPT
+	WHERE PI_PROCURE_ITEM_ID = IID_PROCURE_ITEM_ID 
+	AND IID_INFO_DATE_RECEIVED IS NULL
+	AND IID_VISION_DESTINATION_DEPT = ? 
+</sql-query>
+
+
+<sql-query name="procureInviteAccptView">
+<return alias="pro" class="com.squ.agri.store.bo.Procurements" />
+	SELECT PI_PROCURE_ITEM_ID AS {pro.procureId} ,
+	PI_VISION_PURCHASE_REQ_NO AS {pro.prnNo} ,PI_PRN_DATE AS {pro.prnDate},
+	IID_INFO_DATE_RECEIVED AS {pro.dtInfoReceived},
+	IID_VISION_SOURCE_DEPT AS {pro.deptSourceId},
+	IID_VISION_DESTINATION_DEPT AS {pro.deptDestId},
+	IID_VISION_DESTINATION_DEPT AS {pro.deptId}
+	FROM PROCURE_ITEMS,INFORM_ITEM_DEPT
+	WHERE PI_PROCURE_ITEM_ID = IID_PROCURE_ITEM_ID 
+	AND IID_INFO_DATE_RECEIVED IS NOT NULL
+	AND IID_INFO_DATE_ACCEPTED IS NULL
+	AND IID_VISION_SOURCE_DEPT = :sourceDept 
+	ORDER BY IID_INFO_DATE_RECEIVED ASC
+</sql-query>
+
+
+<!-- sql-query name="sp_procureItems" callable="true"-->
+	<!-- return alias="procurements" class="com.squ.agri.store.bo.Procurements"-->
+		<!-- return-property name="procureId" column="PI_PROCURE_ITEM_ID"/-->
+		<!-- return-property name="prnNo" column="PI_VISION_PURCHASE_REQ_NO"/-->
+		<!-- return-property name="lpoNo" column="PI_VISION_LPO_NO"/-->
+		<!-- return-property name="grnNo" column="PI_VISION_GRN_NO"/-->
+		<!-- return-property name="supplierId" column="PI_SUPPLIER_ID"/-->
+		<!-- return-property name="deptSourceId" column="IID_VISION_SOURCE_DEPT"/-->
+		<!-- return-property name="deptDestId" column="IID_VISION_DESTINATION_DEPT"/-->
+	<!-- /return-->   
+		<!-- { ? = call FUNC_PROCURE_ITEMS2(?,?,?,?,?,?) } -->
+		<!-- { ? = call FUNC_PROCURE_ITEMS2(:prnNo,:lpoNo,:grnNo,:supplierId,:deptSourceId,:deptDestId) } -->
+<!-- /sql-query-->
+
+
+</hibernate-mapping>

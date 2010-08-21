@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+   <class
+        name="com.squ.agri.store.bo.Department"
+        table="VISION_DEPT_AGR_VW">
+
+        <id name="deptId"
+            column="VHM_DEPT_CODE">
+        </id>
+        
+        <property
+            name="collegeId"
+            column="VHM_BRANCH_CODE"/>
+
+        <property
+            name="deptName"
+            column="VHM_DEPT_NAME_ENG"/>
+
+    </class>
+
+</hibernate-mapping>

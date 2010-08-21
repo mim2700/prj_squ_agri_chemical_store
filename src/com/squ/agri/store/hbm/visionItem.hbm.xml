@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class
+        name="com.squ.agri.store.bo.Item"
+        table="VISION_PURCHASE_LPO_AGR_VW">
+
+        <id name="itemCode"
+            column="PRODUCT_CODE">
+        </id>
+        
+        <property
+            name="itemName"
+            column="PROD_DESC"/>
+
+        <property
+            name="itemQuantity"
+            column="RECIEVED_QUANTITY"/>
+
+        <many-to-one
+            name="purchaseOrder"
+            column="REQUEST_NO"
+            class="com.squ.agri.store.bo.PurchaseOrder"
+            not-null="true" lazy="false"/>
+
+
+    </class>
+<!--             Stored Procedures                  -->
+<sql-query name="sp_insert_Item_And_SubItem" callable="true">
+		<return-scalar column="VISION_ITEM_CODE"/>
+		<return-scalar column="SUB_ITEM_ID"/>
+		<return-scalar column="MANU_DATE"/>
+		<return-scalar column="EXPIRY_DATE"/>
+		<return-scalar column="ITEM_SIZE"/>
+		<return-scalar column="ITEM_VARIATION"/>
+		<return-scalar column="ITEM_GRADE"/>
+		{ ? = call FUNC_PROCURE_PRODUCT_ITEM_ADD(:procureId,:visionItemId,:visionItemName,:visionItemQty,:mutipleSubItems) }
+</sql-query>
+
+<sql-query name="sp_get_all_agri_vision_items" callable="true">
+		<return-scalar column="VISION_ITEM_CODE"/>
+		<return-scalar column="VISION_ITEM_NAME"/>
+		{ ? = call FUNC_GET_ALL_VISION_AGRI_ITEMS}
+</sql-query>
+
+</hibernate-mapping>

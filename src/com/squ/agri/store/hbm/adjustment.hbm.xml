@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class
+        name="com.squ.agri.store.bo.Adjustment"
+        table="M_ADJUSTMENT">
+
+        <id name="adjusment_ID"  column="ADJUSTMENT_ID">
+           <generator class="assigned"/>
+        </id>
+        
+        <property
+            name="adjusment_Name"
+            column="ADJUSTMENT_NAME"/>
+            
+         <property
+            name="adjusment_Action"
+            column="SA_ACTION"/>
+
+    </class>
+
+	<!--             Stored Procedures                  -->
+	<sql-query name="sp_adjustment" callable="true">
+		<return-scalar column="ADJUST_ID" />
+		{? = call fun_adjustment(:subitemCode,:deptId,:qty,:action,:adjustId,:manuDate,:expireDate,:grade,:size,:variation,:add_into)}
+	</sql-query>
+	<sql-query name="sp_adjust_subitems" callable="true">
+		<return-scalar column="SUBITEM_ID" />
+		{? = call FUN_ADJUST_SUBITEM(:itemCode,:itemName,:itemType,:itemSafety,:itemMeasurment,:itemIsMultiSubitems)}
+	</sql-query>
+
+</hibernate-mapping>

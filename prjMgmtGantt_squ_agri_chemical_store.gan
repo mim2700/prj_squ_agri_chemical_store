@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="agri_chemical_store" company="squ" webLink="" view-date="2009-08-02" view-index="0" gantt-divider-location="377" resource-divider-location="301" version="2.0">
+    <description/>
+    <view zooming-state="default:4" id="gantt-chart"/>
+    <view id="resource-table">
+        <field id="0" name="Name" width="79" order="0"/>
+        <field id="1" name="Default role" width="20" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <calendar id="1" name="default">
+                <default-week sun="0" mon="0" tue="0" wed="0" thu="1" fri="1" sat="0"/>
+                <overriden-day-types/>
+                <days/>
+            </calendar>
+        </day-types>
+    </calendars>
+    <tasks color="#8cb6ce">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="Modify Property files in English" color="#3333ff" shape="0,1,0,1,0,0,1,0,0,1,0,1,1,0,0,0" meeting="false" start="2009-08-22" duration="2" complete="100" thirdDate="2009-08-21" thirdDate-constraint="1" priority="2" expand="true"/>
+        <task id="1" name="CSS_creation" color="#ccccff" meeting="false" start="2009-08-19" duration="5" complete="100" priority="1" expand="true"/>
+        <task id="2" name="Class_diagram" color="#66ff00" meeting="false" start="2009-08-22" duration="2" complete="1" priority="2" expand="true"/>
+        <task id="3" name="MessageDigest Generation" color="#8cb6ce" meeting="false" start="2009-09-01" duration="1" complete="100" priority="1" expand="true">
+            <notes><![CDATA[This is for generate encrypted message]]></notes>
+        </task>
+        <task id="4" name="User activity Jsp page creation" color="#8cb6ce" meeting="false" start="2009-09-02" duration="1" complete="100" priority="1" expand="true"/>
+        <task id="5" name="Study Tomcat Authentication" color="#6666ff" meeting="false" start="2009-09-05" duration="1" complete="50" priority="1" expand="true"/>
+        <task id="6" name="Manage Grade for Items" color="#996600" meeting="false" start="2009-10-07" duration="2" complete="0" priority="1" expand="true"/>
+    </tasks>
+    <resources>
+        <resource id="0" name="Yousuf Ali Abdullah Al-Badi" function="SoftwareDevelopment:2" contacts="u047902@squ.edu.om" phone="92266981"/>
+        <resource id="1" name="Bhabesh Bhabani Mukhopadhyay" function="SoftwareDevelopment:10" contacts="bhabesh@squ.edu.om" phone="97259245"/>
+    </resources>
+    <allocations>
+        <allocation task-id="0" resource-id="0" function="SoftwareDevelopment:2" responsible="false" load="50.0"/>
+        <allocation task-id="1" resource-id="0" function="SoftwareDevelopment:2" responsible="false" load="50.0"/>
+        <allocation task-id="2" resource-id="1" function="SoftwareDevelopment:10" responsible="true" load="100.0"/>
+        <allocation task-id="3" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="4" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="5" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="6" resource-id="0" function="SoftwareDevelopment:2" responsible="false" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <taskdisplaycolumns>
+        <displaycolumn property-id="tpd3" order="0" width="120"/>
+        <displaycolumn property-id="tpd4" order="1" width="53"/>
+        <displaycolumn property-id="tpd5" order="2" width="52"/>
+    </taskdisplaycolumns>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>

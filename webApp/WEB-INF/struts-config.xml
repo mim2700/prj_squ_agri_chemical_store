@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+  <data-sources>
+  </data-sources>
+  <form-beans>
+  
+    <!-- Form - Procurement  Form - Procurement - Check Items -->
+    <form-bean name="CheckItemsDynaForm" type="org.apache.struts.action.DynaActionForm">
+      <form-property name="prnNo" type="java.lang.String"/>
+      <form-property name="lpoNo" type="java.lang.String"/>
+      <form-property name="grnNo" type="java.lang.String"/>
+      <form-property name="userRole" type="java.lang.String"/>
+      <form-property name="deptDestId" type="java.lang.String"/>
+    </form-bean>
+    <!-- Form - Items - Grade -->
+    	<form-bean name="itemGradeForm" type="com.squ.agri.store.forms.ItemGradeForm"/>
+    <!-- Form - Items - Safety -->
+    	<form-bean name="itemSafetyForm" type="com.squ.agri.store.forms.ItemSafetyForm"/>
+    <!-- Form - Items - Safety -->
+    	<form-bean name="itemTypeForm" type="com.squ.agri.store.forms.ItemTypeForm"/>
+    	
+    <!-- Form - Procurement - Check Items/Invitation -->
+    <form-bean name="procurementForm" type="com.squ.agri.store.forms.ProcurementForm"/>
+    <form-bean name="InvitationItemsDetailForm" type="com.squ.agri.store.forms.InvitationItemsDetailForm"/>
+    <form-bean name="storeItemsDetailForm" type="com.squ.agri.store.forms.StoreItemsDetailForm"/>
+    <form-bean name="requestItemsDetailForm" type="com.squ.agri.store.forms.RequestItemsDetailForm"/>
+    <form-bean name="StoreApprovedItemsDetailForm" type="com.squ.agri.store.forms.StoreApprovedItemsDetailForm"/>
+    <form-bean name="StoreRequestedItemsForm" type="com.squ.agri.store.forms.StoreRequestedItemsForm"/>
+    <form-bean name="ConsumeItemsForm" type="com.squ.agri.store.forms.ConsumeItemForm"/>
+    <form-bean name="AdjustItemsForm" type="com.squ.agri.store.forms.AdjustItemsForm"/>
+    <form-bean name="LoginForm" type="com.squ.agri.store.forms.LoginForm"/>
+    <form-bean name="AdminUserAddForm" type="com.squ.agri.store.forms.AdminUserAddForm"/>
+    <form-bean name="AdminUserUpdateForm" type="com.squ.agri.store.forms.AdminUserUpdateForm"/>
+    <form-bean name="UserUpdateForm" type="com.squ.agri.store.forms.UserUpdateForm"/>
+    <!-- Forms for Report -->
+    <form-bean name="RptTransactionDtForm" type="com.squ.agri.store.forms.reports.RptTransactionDtForm"/>
+  </form-beans>
+  <global-exceptions>
+  </global-exceptions>
+  <global-forwards>
+    <forward name="login" path="/login.do" redirect="true"/>
+    <forward name="logout" path="/logout.do" redirect="true"/>
+    <forward name="loginFails" path="/loginFails.do" redirect="true"/>
+    <forward name="welcome" path="/welcome.do" redirect="true"/>
+    <forward name="error403" path="/error403.do" redirect="true"/>
+    <forward name="error404" path="/error404.do" redirect="true"/>
+    
+    <!-- GlobalForward - Items  - Grade -->
+    <forward name="itemGrade" path="/itemGrade.do" />
+    
+     <!-- GlobalForward - Items  - Safety -->
+    <forward name="itemSafety" path="/itemSafety.do" />
+    
+     <!-- GlobalForward - Items  - Safety -->
+    <forward name="itemType" path="/itemType.do" />
+    
+    <!-- GlobalForward - Procurement  GlobalForward - Procurement - Check Items -->
+    <forward name="checkItems" path="/checkItems.do"/>
+    <forward name="checkItemDetail" path="/checkItemDetail.do"/>
+    <forward name="checkItemDetailResult" path="/checkItemDetailResult.do"/>
+    <!-- GlobalForward - Procurement - Invitation -->
+    <forward name="orderInvitationList" path="/orderInvitationList.do"/>
+    <forward name="orderInvitationItemDetail" path="/orderInvitationItemDetail.do"/>
+    <!-- GlobalForward - Procurement - Acceptance -->
+    <forward name="orderAcceptanceList" path="/orderAcceptanceList.do"/>
+    <forward name="orderAcceptanceItemDetail" path="/orderAcceptanceItemDetail.do"/>
+    <forward name="orderAcceptanceSubItemDetail" path="/orderAcceptanceSubItemDetail.do"/>
+
+    <forward name="requestMaterials" path="/requestMaterials.do"/>
+    <forward name="requestedItemsList" path="/requestedItemsList.do"/>
+    <forward name="requestedItemDetail" path="/requestedItemDetail.do"/>
+    <forward name="approvedItemsList" path="/approvedItemsList.do"/>
+    <forward name="consumption" path="/consumption.do"/>
+    
+    <!-- GlobalForward -Adjustment -->
+    <forward name="adjustments" path="/adjustments.do"/>
+    <forward name="adjustmentsDetails" path="/adjustmentsDetails.do"/>
+    <forward name="adjustmentsSubItemsDetails" path="/adjustmentsSubItemsDetails.do"/>
+    
+    <forward name="login1" path="/login1.do"/>
+    <forward name="adminUserAdd" path="/adminUserAdd.do"/>
+    <forward name="adminUserUpdate" path="/adminUserUpdate.do"/>
+    <forward name="userChangePwd" path="/userChangePwd.do"/>
+    <!-- forward name="getUser" path="/getUser.do"/ -->
+    <!-- Forwards for Report -->
+    <forward name="report" path="/report.do"/>
+    <forward name="rptTransactionDt" path="/rptTransactionDt.do"/>
+    <forward name="rptTransactionDtGenerate" path="/rptTransactionDtGenerate.do"/>
+  </global-forwards>
+  
+  <action-mappings>
+    <action path="/welcome" name="LoginForm" type="com.squ.agri.store.actions.WelcomeAction">
+      <forward name="welcomePage" path="page.welcome"/>
+    </action>
+    <!-- Action - Items -  Grade -->
+    <action path="/itemGrade" name="itemGradeForm" type="com.squ.agri.store.actions.ItemGradeAction" scope="request">
+      <forward name="showItemGrade" path="page.itemGrade"/>
+    </action>
+    
+    <action path="/itemGradeResults" name="itemGradeForm" type="com.squ.agri.store.actions.ItemGradeResultsAction" >
+      <forward name="showItemGradeResults" path="page.success"/>
+    </action>     
+   
+   <!-- Action - Items -  Safety -->
+    <action path="/itemSafety" name="itemSafetyForm" type="com.squ.agri.store.actions.ItemSafetyAction" scope="request">
+      <forward name="showItemSafety" path="page.itemSafety"/>
+    </action>
+    
+    <action path="/itemSafetyResults" name="itemSafetyForm" type="com.squ.agri.store.actions.ItemSafetyResultsAction" >
+      <forward name="showItemSafetyResults" path="page.success"/>
+    </action>     
+     
+     <!-- Action - Items -  Type -->
+    <action path="/itemType" name="itemTypeForm" type="com.squ.agri.store.actions.ItemTypeAction" scope="request">
+      <forward name="showItemType" path="page.itemType"/>
+    </action>
+    
+     <action path="/itemTypeResults" name="itemTypeForm" type="com.squ.agri.store.actions.ItemTypeResultsAction" >
+      <forward name="showItemTypeResults" path="page.success"/>
+    </action> 
+     
+     <!--      ERROR403 page Forward     -->
+     <action path="/error403" forward="page.error403">
+    </action>
+    
+      <!--      ERROR404 page Forward     -->
+     <action path="/error404" forward="page.error404">
+    </action>
+        
+    <!-- Action - Procurement  Action - Procurement - Check Items -->
+    <action path="/checkItems" forward="page.checkItems">
+    </action>
+    <action path="/checkItemDetail" name="CheckItemsDynaForm" type="com.squ.agri.store.actions.CheckItemDetailAction" scope="request">
+      <forward name="showCheckItemDetail" path="page.checkItemDetail"/>
+      <forward name="showCheckItem" path="page.checkItems"/>
+    </action>
+    <action path="/checkItemDetailResult" name="procurementForm" type="com.squ.agri.store.actions.CheckItemDetailResultAction" scope="request">
+      <forward name="showCheckItemDetailResult" path="page.success"/>
+    </action>
+    <!-- Action - Procurement - Invitation -->
+    <action path="/orderInvitationList" type="com.squ.agri.store.actions.OrderInvitationListAction">
+      <forward name="showOrderInvitationList" path="page.orderInvitationList"/>
+    </action>
+    <action path="/orderInvitationItemDetail" name="CheckItemsDynaForm" type="com.squ.agri.store.actions.OrderInvitationItemDetailAction">
+      <forward name="showOrderInvitationItemDetail" path="page.orderInvitationItemDetail"/>
+    </action>
+    <action path="/acptInvitationResults" name="procurementForm" type="com.squ.agri.store.actions.AcptInvitationResultAction">
+      <forward name="showInvitationItemsResults" path="page.success"/>
+    </action>
+    <!-- Action - Procurement - Acceptance --> 
+    <action path="/orderAcceptanceList" type="com.squ.agri.store.actions.OrderAcceptanceListAction" scope="session">
+      <forward name="showOrderAcceptanceList" path="page.orderAcceptanceList"/>
+    </action>
+    <action path="/orderAcceptanceItemDetail" name="procurementForm" type="com.squ.agri.store.actions.OrderAcceptanceItemDetailAction" scope="session">
+      <forward name="showOrderAcceptanceItemDetail" path="page.orderAcceptanceItemDetail" />
+    </action>
+		    <action path="/orderAcceptanceSubItemDetail" name="storeItemsDetailForm" type="com.squ.agri.store.actions.OrderAcceptanceSubItemDetailAction" scope="session">
+		      <forward name="showOrderAcceptanceSubItemDetail" path="page.orderAcceptanceSubItemDetail"/>
+		    </action>
+		    <action path="/orderAcceptanceSubItemResult" name="storeItemsDetailForm" type="com.squ.agri.store.actions.OrderAcceptanceSubItemDetailResultAction" scope="session">
+		      <forward name="showStoreSubItemsDetailResults"  path="page.orderAcceptanceSubItemResult" redirect="true"  />
+		    </action>
+    <action path="/storeItemsDetailResults" name="procurementForm" type="com.squ.agri.store.actions.StoreItemsDetailResultsAction" scope="session">
+      <forward name="showStoreItemsDetailResults" path="page.success" />
+    </action>
+    <!-- Action - Inhouse - Item Receiving - Request -->     
+    <action path="/requestMaterials" name="requestItemsDetailForm" type="com.squ.agri.store.actions.RequestMaterialAction" scope="session" input="page.requestMaterial">
+    	<forward name="showRequestMaterial" path="page.requestMaterial" redirect="true" />
+    </action>   
+    <action path="/requestMaterialsCart" name="requestItemsDetailForm" type="com.squ.agri.store.actions.RequestMaterialCartAction"  scope="session" input="page.requestMaterial">
+    	<forward name="showRequestMaterialCart" path="page.requestMaterialCart" redirect="true"/>
+    </action>   
+    <action path="/requestItemsResults" name="requestItemsDetailForm" type="com.squ.agri.store.actions.RequestItemsResultsAction" scope="session" input="page.requestMaterialCart">
+      <forward name="showRequestItemsResults" path="page.success"/>
+    </action>
+    <!-- Action - Inhouse - Item Issueing - Approval -->
+    <action path="/requestedItemsList" name="requestItemsDetailForm"	type="com.squ.agri.store.actions.RequestedItemsListAction" >
+      <forward name="showRequestedItemsList" path="page.requestedItemsList"/>
+    </action>
+    <action path="/requestedItemDetail" name="requestItemsDetailForm"	type="com.squ.agri.store.actions.RequestedItemDetailAction">
+      <forward name="showrequestedItemDetail" path="page.requestedItemDetail"/>
+    </action>
+    <action path="/requestedItemsIssue" name="requestItemsDetailForm"	type="com.squ.agri.store.actions.RequestedItemsIssueAction">
+      <forward name="showrequestedItemIssueSuccess" path="page.success"/>
+    </action>
+	<!-- Action - Inhouse - Item Receiving - Accept -->
+    <action path="/approvedItemsList" name="requestItemsDetailForm" type="com.squ.agri.store.actions.ApprovedItemsListAction">
+      <forward name="showApprovedItemsList" path="page.approvedItemsList"/>
+    </action>
+    <action path="/storeApprovedItemsResults" name="requestItemsDetailForm" type="com.squ.agri.store.actions.StoreApprovedItemsResultsAction">
+      <forward name="showStoreApprovedItemsResults" path="page.success"/>
+    </action>
+
+    <action path="/storeRequestedItemsResults" name="StoreRequestedItemsForm" type="com.squ.agri.store.actions.StoreRequestedItemsResultsAction">
+      <forward name="showStoreRequestedItemsResults" path="page.success"/>
+    </action>
+    
+    				<!--   Consumtion  -->
+    <action path="/consumeItemsResults" name="ConsumeItemsForm" type="com.squ.agri.store.actions.ConsumeItemsResultsAction">
+      <forward name="showConsumeItemsResults" path="page.success"/>
+    </action>
+     <action path="/consumption" name="ConsumeItemsForm" type="com.squ.agri.store.actions.ConsumeItemsAction">
+      <forward name="ShowConsumption" path="page.consumption"/>
+    </action>
+    
+    				<!--  Adjustments -->
+    <action path="/adjustItemsResults" name="AdjustItemsForm" type="com.squ.agri.store.actions.AdjustItemsResultsAction">
+      <forward name="showAdjustItemsResults" path="page.success"/>
+    </action>
+    
+     <action path="/adjustmentsSubItemsDetails" name="AdjustItemsForm" type="com.squ.agri.store.actions.AdjustmentSubItemsDetailsAction">
+      <forward name="showAdjustmentSubItemsDetails" path="page.adjustmentSubItemsDetails"/>
+    </action>
+    
+     <action path="/adjustmentsSubItemsDetailsResults" name="AdjustItemsForm" type="com.squ.agri.store.actions.AdjustSubItemsDetailsResultsAction">
+      <forward name="showAdjustmentSubItemsDetailsResults" path="page.success"/>
+    </action>
+    
+     <action path="/adjustmentsDetails" name="AdjustItemsForm" type="com.squ.agri.store.actions.AdjustmentDetailsAction">
+      <forward name="showAdjustmentDetails" path="page.adjustmentDetails"/>
+    </action>
+    
+     <action path="/adjustments" name="AdjustItemsForm" type="com.squ.agri.store.actions.AdjustItemsAction">
+      <forward name="ShowAdjustments" path="page.adjustment"/>
+    </action>
+    
+    <!-- Action - Login -->
+    <action path="/login" forward="page.login" unknown="true">
+    </action>
+    
+    <!-- Action - Logout -->
+    <action path="/logout" name="LoginForm"  type="com.squ.agri.store.actions.LogoutAction">
+    <forward name="welcome" path="page.welcome"/>
+    <forward name="logout" path="page.logout"/>
+    </action>
+    
+    <!-- Action - LoginFails -->
+    <action path="/loginFails" name="LoginForm"  type="com.squ.agri.store.actions.LoginFailsAction">
+    <forward name="loginFails" path="page.loginFail"/>
+    </action>
+
+    <action path="/login1" name="LoginForm" type="com.squ.agri.store.actions.LoginAction">
+      <forward name="loginToEncrypt" path="page.login1"/>
+    </action>
+   
+   <action path="/consumeSubitems" name="ConsumeItemsForm" type="com.squ.agri.store.actions.ConsumeSubitemsAction">
+      <forward name="showConsumeSubItems" path="page.consumeSubitems"/>
+    </action>
+    
+    
+    <!-- Actions for users Manage -->
+    <action path="/adminUserAdd" name="LoginForm" type="com.squ.agri.store.actions.AdminUserAddAction">
+      <forward name="addUser" path="page.adminUserAdd"/>
+    </action>
+    <action path="/adminUserAddResult" name="LoginForm" type="com.squ.agri.store.actions.AdminUserAddResultsAction">
+      <forward name="addUser" path="page.success"/>
+    </action>
+    <action path="/adminUserUpdate" name="LoginForm" type="com.squ.agri.store.actions.AdminUserUpdateAction">
+      <forward name="adminUserUpdate" path="page.adminUserUpdate"/>
+    </action>
+    <action path="/adminUserUpdateResults" name="LoginForm" type="com.squ.agri.store.actions.AdminUserUpdateResultsAction">
+      <forward name="adminUserUpdate" path="page.success"/>
+    </action>
+    <action path="/userChangePwdResults" name="LoginForm" type="com.squ.agri.store.actions.UserUpdateResultsAction">
+      <forward name="userUpdateFail" path="page.userChangePwd"/>
+       <forward name="userUpdateSuccess" path="page.success"/>
+    </action>
+    <action path="/userChangePwd" name="LoginForm" type="com.squ.agri.store.actions.UserUpdateAction">
+      <forward name="userUpdate" path="page.userChangePwd"/>
+    </action>
+    
+       
+    <!-- Actions for Report -->
+    <action path="/report" forward="page.report"/>
+    <action path="/reportJasper" type="com.squ.agri.store.actions.ReportAction"></action>
+    <action path="/rptTransactionDt" forward="page.report.transactionByDate" validate="false">
+    </action>
+    <action path="/rptTransactionDtGenerate" name="RptTransactionDtForm" type="com.squ.agri.store.actions.reports.RptTransactionDtAction">
+      <forward name="showRptTransactionDt" path="page.report.transactionByDate"/>
+    </action>
+    
+    <!--  Actions for Ajax -->
+    <!-- action path="/getUser2" type="com.squ.agri.store.actions.ajax.getUserAction" / -->
+  
+  </action-mappings>
+  <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+  <message-resources parameter="MessageResources"/>
+  <message-resources parameter="com.squ.agri.store.properties.ApplicationResources_en"/>
+
+  	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+  
+    <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>
+    <set-property property="moduleAware" value="true"/>
+    <set-property property="definitions-parser-validate" value="true"/>
+  </plug-in>
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+  </plug-in>
+</struts-config>

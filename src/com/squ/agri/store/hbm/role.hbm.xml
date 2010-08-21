@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.squ.agri.store.users.UserRole">
+		<id name="role_id" >
+		</id>
+		<property name="role_id" insert="false" update="false"/>
+		<property name="role_name" />
+		
+		<loader query-ref="userRole" />
+
+	</class>
+
+	<sql-query name="rolesList">
+	<return alias="rol" class="com.squ.agri.store.users.UserRole" />
+		SELECT ROLES.ROLE_ID 		AS {rol.role_id}, 
+			   ROLES.ROLE_NAME 		AS {rol.role_name}
+		FROM ROLES
+	</sql-query>
+
+</hibernate-mapping>

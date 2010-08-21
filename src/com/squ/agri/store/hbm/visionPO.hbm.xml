@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class
+        name="com.squ.agri.store.bo.PurchaseOrder"
+        table="VISION_PURCHASE_LPO_AGR_VW">
+
+        <id name="prnNo"
+            column="REQUEST_NO">
+        </id>
+        
+        <property
+            name="lpoNo"
+            column="LPO_NO"/>
+
+        <property
+            name="productGroup"
+            column="PRODUCT_GROUP_CODE"/>
+
+
+        <property
+            name="supplierId"
+            column="SUPPLIER_CODE"/>
+
+
+        <property
+            name="supplierName"
+            column="SUPPLIER_NAME_ENGLISH"/>
+            
+        <property
+            name="dateLpo"
+            column="LPO_DATE"/>
+
+            
+			  <set name="items" inverse="true" lazy="false">
+			    <key column="REQUEST_NO"/>
+			    <one-to-many class="com.squ.agri.store.bo.Item" />
+			  </set>
+
+
+    </class>
+
+</hibernate-mapping>

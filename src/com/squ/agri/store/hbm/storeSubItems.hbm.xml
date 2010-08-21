@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="com.squ.agri.store.bo.SubItem"  >   
+  <id name="subItemId" >   
+  <!-- generator class="assigned" /-->   
+  </id>
+    <property name="subItemId" insert="false" update="false"/>
+    <property name="manuDate" />
+    <property name="expireDate" />
+</class>  
+
+<!--             Stored Procedures                  -->
+<sql-query name="sp_update_SubItem" callable="true">
+		<return-scalar column="SUB_ITEM_ID"/>
+		{ ? = call FUNC_PROCURE_SUB_ITEM_UPDATE(:subItemId,:manuDate,:expiryDate,:itemSize,:itemVariation,:itemGrade) }
+</sql-query>
+<sql-query name="sp_consume_dept_SubItem" callable="true">
+		<return-scalar column="SUB_ITEM_ID"/>
+		{ ? = call FUNC_CONSUME_DEPT_SUBITEMS(:subItemId,:deptId,:qty,:consumeFrom) }
+</sql-query>
+<sql-query name="sp_inHouseSubItemsList" callable="true">
+		<return-scalar column="subItemCode"/>
+		<return-scalar column="manuDate"/>
+		<return-scalar column="expiryDate"/>
+		<return-scalar column="available_Qty"/>
+		{ ? = call FUNC_DEPT_SUBITEMS_LIST(:subItemId,:deptId,:quantity,:searchFrom,:adjustId) }
+</sql-query>
+</hibernate-mapping>

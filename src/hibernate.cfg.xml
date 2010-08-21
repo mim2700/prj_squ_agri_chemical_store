@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='utf-8'?> <!DOCTYPE hibernate-configuration
+        PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property-->
+        <!-- property name="hibernate.connection.url">jdbc:mysql://localhost/testdb</property -->
+        <!-- property name="hibernate.connection.username">root</property-->
+        <!-- property name="connection.password">bbm</property-->
+        
+        <!-- property name="dialect">org.hibernate.dialect.MySQLDialect</property-->
+        
+        
+        <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+
+        <!-- property name="hibernate.connection.url">jdbc:oracle:thin:@172.20.10.72:1521:squagri</property -->
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@172.20.10.73:1521:XE</property>
+
+        <property name="hibernate.connection.username">squ_agri_store</property>
+        <property name="connection.password">squ</property>
+        
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+        
+        
+		<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+        <property name="hibernate.c3p0.min_size">5</property>
+        <property name="hibernate.c3p0.max_size">20</property>
+        <property name="hibernate.c3p0.timeout">300</property>
+        <property name="hibernate.c3p0.max_statements">50</property>
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+	<!-- property name = "hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property-->
+
+
+        <!-- SQL to stdout logging -->
+        <property name="show_sql">true</property> 
+        <property name="format_sql">true</property>
+        <property name="use_sql_comments">false</property>
+        <!--  -->
+		<!-- Mapping for Purchase order and Items - This mapping having dependency  from Vision 2000 -->
+        <mapping resource="com/squ/agri/store/hbm/visionPO.hbm.xml"/>
+        <mapping resource="com/squ/agri/store/hbm/visionItem.hbm.xml"/>
+        
+        <!-- Mapping for Department - This mapping having dependency  from Vision 2000 -->
+        <mapping resource="com/squ/agri/store/hbm/department.hbm.xml"/>
+        
+        <!-- Mapping for Procurements -->
+        <mapping resource="com/squ/agri/store/hbm/procureItems.hbm.xml"/>
+        <mapping resource="com/squ/agri/store/hbm/storeSubItems.hbm.xml"/>
+        
+        <!-- Mapping for InHouse Operation -->        
+		<mapping resource="com/squ/agri/store/hbm/lotAllocation.hbm.xml"/>  
+		      
+        <!-- Mapping for Users -->
+        <mapping resource="com/squ/agri/store/hbm/user.hbm.xml"/>
+        <mapping resource="com/squ/agri/store/hbm/role.hbm.xml"/>
+        
+        <!-- Mapping for Grade -->
+        <mapping resource="com/squ/agri/store/hbm/grade.hbm.xml"/>
+        
+        <!-- Mapping for Safety -->
+        <mapping resource="com/squ/agri/store/hbm/safety.hbm.xml"/>
+        
+        <!-- Mapping for Type -->
+        <mapping resource="com/squ/agri/store/hbm/type.hbm.xml"/>
+ 
+         <!-- Mapping for Adjustment -->
+        <mapping resource="com/squ/agri/store/hbm/adjustment.hbm.xml"/>
+        
+         <!-- Mapping for Measurment -->
+        <mapping resource="com/squ/agri/store/hbm/measurment.hbm.xml"/>
+        
+         <!-- Mapping for Variation -->
+        <mapping resource="com/squ/agri/store/hbm/variation.hbm.xml"/>
+        
+         <!-- Mapping for classes as entity -->
+        <!-- mapping class="com.squ.agri.store.bo.Procurements" resource="com/squ/agri/store/hbm/procureItems.hbm.xml"/-->
+
+    </session-factory>
+</hibernate-configuration>

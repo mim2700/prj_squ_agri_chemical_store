@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/commons-beanutils.jar" sourcepath="D:/downloads_bhabesh/jar/src/commons-beanutils-1.6-src.zip"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/commons-digester.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/commons-fileupload.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/commons-validator.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/jakarta-oro.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/struts.jar" sourcepath="D:/downloads_bhabesh/strutsSource/STRUTS_1_2_BRANCH/1.2.9"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/hibernate3.jar" sourcepath="D:/downloads_bhabesh/hibernate/hibernate-distribution-3.3.2.GA/project/core/src"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/mysql-connector-java-5.1.8-bin.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/slf4j-api-1.5.8.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/slf4j-nop-1.5.8.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/ojdbc14_g.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/iText-2.1.0.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/jasperreports-3.5.3.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/jdt-compiler-3.1.1.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/jxl-2.6.jar"/>
+	<classpathentry kind="lib" path="webApp/WEB-INF/lib/png-encoder-1.5.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry kind="output" path="webApp/WEB-INF/classes"/>
+</classpath>

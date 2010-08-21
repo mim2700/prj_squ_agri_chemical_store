@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class
+        name="com.squ.agri.store.bo.Measurment"
+        table="M_MEASURMENT">
+
+        <id name="measurment_Id"  column="SM_ID">
+           <generator class="assigned"/>
+        </id>
+        
+        <property
+            name="measurment_Unit"
+            column="SM_UNIT"/>
+
+        <property
+            name="measurment_Active"
+            column="SM_ACTIVE"/>
+
+      
+    </class>
+
+</hibernate-mapping>

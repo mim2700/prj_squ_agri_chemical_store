@@ -1,0 +1,165 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body {
+	background-color: #ffffff;
+	
+/* for pull-down menu to work in IE6*/
+behavior:url("/pages/template/csshover2.htc");
+
+}
+
+/* pull-down mainmenu css */
+.mainmenu{
+
+	width: 15em;
+	padding: 0;
+	float: left;
+
+}
+.mainmenu ul {
+	float: left;
+	width: 100%;
+	list-style: none;
+	line-height: 1;
+	color:#000080;
+	background: #c0c0c0;
+
+	padding: 1;
+	border: none; /*  borders of the menu*/
+	border-width: 1px 1px;
+	margin: 0 0 0 0;
+}
+
+.mainmenu a, .mainmenu a:visited {
+	display: block;
+	width: 100%;
+font-family:Arial, Helvetica, sans-serif;font-size:0.8em;font-weight:bold;font-style:normal;text-decoration:underline;
+	color: green;
+	text-decoration: none;
+	padding: 1em 0em;
+	text-indent:1em;
+	margin: 0;	
+
+}
+.mainmenu li li a{padding:1em;text-indent:0;}
+.mainmenu ul ul a{
+	width:100%;
+	height:100%;
+}
+.mainmenu ul a{
+		width: 100%;
+}
+
+
+.mainmenu li  {
+	float: left;
+	width:100%;
+	margin:0;
+	padding:0;
+	border-bottom: none;  /* borders between menus */
+	border-width: 1px 1px;
+}
+
+.mainmenu ul li {float:left; position:relative; }
+.mainmenu ul li  {width:100%;} /* !!!!! */
+	
+.mainmenu li ul {
+	position: absolute;
+	left: -999em;
+	height: auto;
+	width:15em;	
+	background: #B1B1B1;
+	font-weight: normal;
+	border-width: 1px;
+	margin: 0;
+}
+
+.mainmenu li li {
+	width: 100% ; 
+}
+.mainmenu li a{width: 100% ; }
+.mainmenu li li a{
+	width: 100%;
+}
+
+.mainmenu li ul  {
+	margin: -2.1em 0 0 -0.1em;
+}
+.mainmenu li ul ul {
+	margin: -2.1em 0 0 -0.1em;
+}
+.ul_ch, 
+.mainmenu li:hover ul ul,
+.mainmenu li li:hover ul ul,
+.mainmenu li li li:hover ul ul,
+.mainmenu li li li li:hover ul ul,
+.mainmenu li li li li li:hover ul ul
+{
+	left: -999em;
+}
+.mainmenu li:hover ul,
+.mainmenu li li:hover ul,
+.mainmenu li li li:hover ul,
+.mainmenu li li li li:hover ul,
+.mainmenu li li li li li:hover ul
+{
+	left: 100%; /* !!! */
+}
+.mainmenu li:hover>ul.ul_ch   
+{
+	left: 100%; /* !!! */
+}
+
+.mainmenu li:hover{
+	background: #DCDCDC;
+}
+
+.mainmenu li:hover a,.mainmenu li:hover a:visited,.mainmenu li:hover a:hover,.mainmenu li a:hover{
+	color:green;
+}
+.mainmenu li:hover li a, .mainmenu li li:hover li a, 
+.mainmenu li li li:hover li a, .mainmenu li li li li:hover li a,
+.mainmenu li:hover li a:visited, .mainmenu li li:hover li a:visited, 
+.mainmenu li li li:hover li a:visited, .mainmenu li li li li:hover li a:visited
+{
+	color:green;
+}
+.mainmenu li li:hover, .mainmenu li li li:hover, 
+.mainmenu li li li li:hover , .mainmenu li li li li li:hover , .mainmenu li li li li li li:hover 
+{
+	background: #DCDCDC;
+	z-index:9999;
+}
+.mainmenu li li:hover a,.mainmenu li li li:hover a, 
+.mainmenu li li li li:hover a, .mainmenu li li li li li:hover a
+{
+	color: green; 
+}
+
+.mainmenu ul ul a, .mainmenu ul ul a:visited,
+.mainmenu li li a, .mainmenu li li a:visited
+{
+	color: green;
+}
+.mainmenu ul ul a:hover,
+.mainmenu li:hover li:hover a,.mainmenu li:hover li:hover a:visited ,
+.mainmenu li:hover li:hover li:hover a,.mainmenu li:hover li:hover li:hover a:visited,
+.mainmenu li:hover li:hover li:hover li:hover a,.mainmenu li:hover li:hover li:hover li:hover a:visited ,
+.mainmenu li:hover li:hover li:hover li:hover li:hover a,.mainmenu li:hover li:hover li:hover li:hover li:hover a:visited,
+.mainmenu li:hover li:hover li:hover li:hover li:hover li:hover a,.mainmenu li:hover li:hover li:hover li:hover li:hover li:hover a:visited{
+	color: green;
+}
+.mainmenu li:hover li:hover li a,.mainmenu li:hover li:hover li a:visited ,
+.mainmenu li:hover li:hover li:hover li a,.mainmenu li:hover li:hover li:hover li a:visited,
+.mainmenu li:hover li:hover li:hover li:hover li a,.mainmenu li:hover li:hover li:hover li:hover li a:visited,
+.mainmenu li:hover li:hover li:hover li:hover li:hover li a,.mainmenu li:hover li:hover li:hover li:hover li:hover li a:visited{
+	color: green;
+}
+
+
+/* end of mainmenu css */
+
+
+

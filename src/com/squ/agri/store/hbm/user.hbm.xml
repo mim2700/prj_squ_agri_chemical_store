@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.squ.agri.store.users.User">
+		<id name="uid" >
+		</id>
+		<property name="uid" insert="false" update="false"/>
+		<property name="name" />
+		<property name="pwd" />
+		<property name="deptId" />
+		<property name="role" />
+		<property name="active" />
+
+		<loader query-ref="addUser" />
+
+	</class>
+
+	<!--             Stored Procedures                  -->
+	<sql-query name="sp_userCreate" callable="true">
+		<return-scalar column="user_id" />
+		{ ? = call func_user_create(:uid,:pwd,:name,:deptId,:role,:active,:operation) }
+	</sql-query>
+	
+	<sql-query name="usersList">
+<return alias="usr" class="com.squ.agri.store.users.User" />
+	SELECT USERS.USER_ID 		AS {usr.uid}, 
+		   USERS.USER_PASS 		AS {usr.pwd},
+		   USERS.USER_NAME 		AS {usr.name},
+		   USERS.USER_DEPT_ID 	AS {usr.deptId},
+		   USERS.ACTIVE 		AS {usr.active},
+		   USER_ROLES.ROLE_NAME	AS {usr.role}
+		    
+	FROM USERS,USER_ROLES
+	WHERE USERS.USER_ID=USER_ROLES.USER_ID
+</sql-query>
+
+<sql-query name="getUser">
+<return alias="usr" class="com.squ.agri.store.users.User" />
+	SELECT USERS.USER_ID 		AS {usr.uid}, 
+		   USERS.USER_PASS 		AS {usr.pwd},
+		   USERS.USER_NAME 		AS {usr.name},
+		   USERS.USER_DEPT_ID 	AS {usr.deptId},
+		   USERS.ACTIVE 		AS {usr.active},
+		   USER_ROLES.ROLE_NAME	AS {usr.role}
+		    
+	FROM USERS,USER_ROLES
+	WHERE USERS.USER_ID=USER_ROLES.USER_ID AND USERS.USER_ID= :userId2
+</sql-query>
+
+</hibernate-mapping>

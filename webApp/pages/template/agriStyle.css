@@ -1,0 +1,198 @@
+body { background-color:#c0c0c0; }
+
+
+/*********** page title seetings ****************/
+tr.pageTitle td{
+	background-color: #999999;
+	text-align: center;
+	
+}
+/* page title font*/
+tr.pageTitle td font{
+font-size:28px;
+color: #000000;
+font-weight:bold;
+
+}
+/************-----------------********************/
+
+tr.error403 td{
+	background-color: #999999;
+	
+}
+
+tr.pageFooter td{
+	background-color: #999999; 
+}
+tr.fill td {
+ background-color: #CFCFCF;
+ }
+
+/* page.checkItems: page layout*/
+table.itemDetails td.odd { background-color: #999999; }
+table.itemDetails td.even { background-color: #C0C0C0; }
+table.itemDetailsFooter { background-color: #999999;} 
+
+/**/
+table.itemDetailsProducts th { background-color: #FFBB77; }
+table.itemDetailsProducts tr td { background-color: #FFE4CA;}
+
+/**/
+table.invitationItemDetails td.odd { background-color: #999999; }
+table.invitationItemDetails td.even { background-color: #C0C0C0; }
+table.invitationItemDetails td.footer{ background-color: #999999;} 
+
+ /**/
+table.invtationItemDetailsProducts th { background-color: #FFBB77; }
+table.invtationItemDetailsProducts tr td { background-color: #FFE4CA;}
+
+ /**/
+table.approvedPurchaseList th { background-color: #999999; }
+table.approvedPurchaseList tr td { background-color: #C0C0C0;}
+
+/**/
+table.invitationItemsList th { background-color: #999999; }
+table.invitationItemsList tr td { background-color: #C0C0C0;}
+
+/**/
+table.checkItems td.label { background-color: #C0C0C0; }
+table.checkItems td.input { background-color: #CCCCCC; }
+table.checkItems tr.break td{ background-color: #999999; }
+
+/**/
+table.orderAcptRequestDetails td.label { background-color: #808080; }
+table.orderAcptRequestDetails td.input { background-color: #CCCCCC; }
+
+/**/
+table.orderAcptItemDetails th { background-color: #808080; }
+table.orderAcptItemDetails td { background-color: #C0C0C0; }
+table.orderAcptItemDetails tr.footer td { background-color: #808080; }
+
+/******************* requestMaterials.do ***********************/
+table.requestItems tr.break td { background-color: #999999;}
+table.requestItems  td.body { background-color: #C0C0C0;}
+/* List of requested items table */
+table.requestedItemsList th { background-color: #FFBB77; }
+table.requestedItemsList tr td { background-color: #FFE4CA;}
+/***************************************************************/
+
+/******************* approvedItemsList.do **********************/
+table.approvedItems td.label { background-color: #AAAAAA; }
+table.approvedItems td.input { background-color: #CCCCCC; }
+table.approvedItems tr.break td{ background-color: #999999; }
+/* List of approved items table */
+table.approvedItemsList th { background-color: #FFBB77; }
+table.approvedItemsList tr td { background-color: #FFE4CA;}
+/***************************************************************/
+
+/******************* requestedItemsList.do **********************/
+table.requestItemsList td.label { background-color: #AAAAAA; }
+table.requestItemsList td.input { background-color: #CCCCCC; }
+table.requestItemsList tr.break td{ background-color: #999999; }
+/* List of requested items table */
+table.requestItemsListTable th { background-color: #FFBB77; }
+table.requestItemsListTable tr td { background-color: #FFE4CA;}
+/***************************************************************/
+
+/******************* consumption.do **********************/
+table.consumption tr.row1 td { background-color: #C0C0C0;}
+table.consumption tr.row2 td { background-color: #EFEFEF;}
+table.consumption tr.row3 td { background-color: #EFEFEF;}
+table.consumption tr.row4 td { background-color: #C0C0C0;}
+table.itemSearch td.label { background-color: #999999; }
+table.itemSearch td.input { background-color: #C0C0C0; }
+/* Sub items results table */
+table.itemSearch th { background-color: #FFBB77; }
+table.itemSearch tr td { background-color: #FFE4CA;}
+/* Sub items results table */
+table.searchResults th { background-color: #FFBB77; }
+table.searchResults tr td { background-color: #FFE4CA;}
+
+table.consumption tr.break td { background-color: #CFCFCF;}
+/***************************************************************/
+
+/******************* adjustments.do **********************/
+table.adjustments tr.row1 td { background-color: #C0C0C0;}
+table.adjustments tr.row2 td { background-color: #CFCFCF;}
+table.adjustments tr.row3 td { background-color: #CFCFCF;}
+table.adjustments tr.break td { background-color: #EFEFEF;}
+/***************************************************************/
+
+/******************* rptTransactionDt.do **********************/
+table.rptTransactionDt td.label { background-color: #999999; }
+table.rptTransactionDt td.input { background-color: #C0C0C0; }
+table.rptTransactionDt tr.break td{ background-color: #999999; }
+/***************************************************************/
+
+/******************* adminUserAdd.do **********************/
+table.adminUserAdd td.label { background-color: #999999; }
+table.adminUserAdd td.input { background-color: #C0C0C0; }
+/***************************************************************/
+
+/******************* userUpdate.do **********************/
+table.userUpdate td.label { background-color: #999999; }
+table.userUpdate td.input { background-color: #C0C0C0; }
+/***************************************************************/
+
+/******************* adminUserUpdate.do **********************/
+table.adminUserUpdate td.label { background-color: #999999; }
+table.adminUserUpdate td.input { background-color: #C0C0C0; }
+/***************************************************************/
+
+/******************* itemGrade.do **********************/
+table.itemGrade td.label { background-color: #999999; }
+table.itemGrade td.input { background-color: #C0C0C0; }
+/***************************************************************/
+
+/******************* itemSafety.do **********************/
+table.itemSafety td.label { background-color: #999999; }
+table.itemSafety td.input { background-color: #C0C0C0; }
+/***************************************************************/
+
+/******************* itemType.do **********************/
+table.itemType td.label { background-color: #999999; }
+table.itemType td.input { background-color: #C0C0C0; }
+/***************************************************************/
+
+/******************* orderSubitems **********************/
+table.orderSubitems td.label { background-color: #AAAAAA; }
+table.orderSubitems td.input { background-color: #CCCCCC; }
+table.orderSubitems tr.break td{ background-color: #999999; }
+/* List of sub items table */
+table.orderSubitemsTable th { background-color: #FFBB77; }
+table.orderSubitemsTable tr td { background-color: #FFE4CA;}
+.orderSubitemsBody {
+	 background-color:#C0C0C0;
+	 }
+/***************************************************************/
+
+/******************* logout class **********************/
+.logout a, .logout a:visited {
+	display: block;
+	width: 100%;
+font-family:Arial, Helvetica, sans-serif;font-size:0.8em;font-weight:bold;font-style:normal;text-decoration:underline;
+	color: green;
+	text-decoration: none;
+	padding: 1em 0em;
+	text-indent:1em;
+	margin: 0;	
+
+}
+/***************************************************************/
+.style1 {
+	border-style: solid;
+	border-width: 1px;
+}
+
+.style2{
+ border-width: 0px;
+ }
+.style3 {
+	border-style: solid;
+	border-width: 1px;
+	text-align: center;
+	font-size: 12px;
+}
+.style4 {
+	text-align: center;
+}

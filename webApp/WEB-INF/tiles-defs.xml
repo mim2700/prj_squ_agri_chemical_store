@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+         <tiles-definitions>
+ 	<!-- Login Tiles Definition -->
+     	<definition name="login.definition" path="/pages/layout/layout_login.jsp">
+     		<put name="header" value="/pages/layout/header.jsp"/>
+  			<put name="footer" value="/pages/layout/footer_login.jsp"/>
+  		</definition>	
+ 	<!-- Base Tiles Definition -->
+	<definition name="base.definition" path="/pages/layout/layout.jsp">
+		<put name="header" value="/pages/layout/header.jsp"/>
+		<put name="navigation" value="/pages/template/menu.jsp"/>
+	</definition>
+	<!-- Base Tiles Definition with footer -->
+	<definition name="base.footer.definition" path="/pages/layout/layout_base_with_footer.jsp">
+		<put name="header" value="/pages/layout/header.jsp"/>
+		<put name="navigation" value="/pages/template/menu.jsp"/>
+	</definition>
+ 	<!-- Single Page with Footer Definition -->
+      	<definition name="single.footer.definition" path="/pages/layout/layout_single_footer.jsp">
+  			<put name="footer" value="/pages/layout/footer_login.jsp"/>
+  		</definition>		
+
+ 	<!-- Tiles Definition of success page -->
+	<definition extends="base.definition" name="page.success">
+		<put name="title" value="Operation Successful"/>
+		<put name="body" value="/pages/result/success.jsp"/>
+	</definition>
+	
+	 <!-- Tiles Definition of failure page -->
+	<definition extends="base.definition" name="page.failure">
+		<put name="title" value="operation Failure"/>
+		<put name="body" value="/pages/result/failure.jsp"/>
+	</definition>
+
+	<!-- Tiles Definition of login page -->
+      	<definition extends="login.definition" name="page.login">
+      		<put name="title" value="Login to store management application at College of Agriculture and Marine Sciences"/>
+            <put name="body" value="/pages/login/login.jsp"/>
+		</definition>
+		
+	<!-- Tiles Definition of loginFail page -->
+      	<definition extends="login.definition" name="page.loginFail">
+      		<put name="title" value=" Fails To Login "/>
+            <put name="body" value="/pages/template/fail_login.jsp"/>
+		</definition>
+		
+	<!-- Tiles Definition of logout page -->
+      	<definition extends="login.definition" name="page.logout">
+      		<put name="title" value="Logout from store management application at College of Agriculture and Marine Sciences"/>
+            <put name="body" value="/pages/logout/logout.jsp"/>
+		</definition>
+		
+	<!-- Tiles Definition of login1 page -->
+      	<definition extends="login.definition" name="page.login1">
+      		<put name="title" value="Login to Encrypt"/>
+            <put name="body" value="/pages/login/login2.jsp"/>
+		</definition>
+ 	<!-- Tiles Definition of welcome page -->
+	<definition extends="base.footer.definition" name="page.welcome">
+		<put name="title" value="Welcome to College of Agriculture and Marine Sciences"/>
+		<put name="body" value="/pages/main.jsp"/>
+		<put name="footer" value="/pages/layout/footer.jsp"/>
+	</definition>
+
+	<!-- Tiles Definition of Items Grade page -->
+	<definition extends="base.definition" name="page.itemGrade">
+		<put name="title" value="Grade for Item"/>
+		<put name="body" value="/pages/item/grade/grade.jsp"/>
+	</definition>	
+	
+	
+	<!-- Tiles Definition of Items Safety page -->
+	<definition extends="base.definition" name="page.itemSafety">
+		<put name="title" value="Safety Of Item"/>
+		<put name="body" value="/pages/item/safety/safety.jsp"/>
+	</definition>	
+
+	<!-- Tiles Definition of Items Types page -->
+	<definition extends="base.definition" name="page.itemType">
+		<put name="title" value="Type Of Item"/>
+		<put name="body" value="/pages/item/type/type.jsp"/>
+	</definition>	
+	
+
+	<!-- Tiles Definition of check items page -->
+	<definition extends="base.definition" name="page.checkItems">
+		<put name="title" value="Checking of Items for Requested Orders"/>
+		<put name="body" value="/pages/procure/check_items/check_items.jsp"/>
+	</definition>
+
+	<!-- Tiles Definition of check item detail page -->
+	<definition extends="base.definition" name="page.checkItemDetail">
+		<put name="title" value="Detail of Items Purchased for Requested Orders"/>
+		<put name="body" value="/pages/procure/check_items/check_item_details.jsp"/>
+	</definition>
+
+	<!-- Tiles Definition of Purchase Order Invitation List page -->
+	<definition extends="base.definition" name="page.orderInvitationList">
+		<put name="title" value="Invitation for collect the Items (Purchase Order Items)"/>
+		<put name="body" value="/pages/procure/invitation/orderInvitation_list.jsp"/>
+	</definition>
+	<!-- Tiles Definition of Purchase Order Invitation Item Detail page -->
+	<definition extends="base.definition" name="page.orderInvitationItemDetail">
+		<put name="title" value="Invitation for collect the Items (Purchase Order Items)"/>
+		<put name="body" value="/pages/procure/invitation/invitation_item_details.jsp"/>
+	</definition>
+
+	<!-- Tiles Definition of Purchase Order Acceptance List page -->
+	<definition extends="base.definition" name="page.orderAcceptanceList">
+		<put name="title" value="List of Approved Purchase Orders"/>
+		<put name="body" value="/pages/procure/store/storeOrder_list.jsp"/>
+	</definition>
+
+	<!-- Tiles Definition of Purchase Order Acceptance Item Detail page -->
+	<definition extends="base.definition" name="page.orderAcceptanceItemDetail">
+		<put name="title" value="Detail of the Accepted Purchase Order to Store"/>
+		<put name="body" value="/pages/procure/store/storeOrderItems.jsp"/>
+	</definition>
+	
+	<!-- Tiles Definition of Purchase Order Acceptance Sub Item Detail page -->
+	<definition extends="single.footer.definition" name="page.orderAcceptanceSubItemDetail">
+		<put name="title" value="Detail of the Sub Items Accepted, Purchase Order to Store"/>
+		<put name="body" value="/pages/procure/store/storeOrderSubItems.jsp"/>
+	</definition>	
+	
+		<!-- Tiles Definition of Purchase Order Acceptance Sub Item Result page -->
+	<definition extends="single.footer.definition" name="page.orderAcceptanceSubItemResult">
+		<put name="title" value="Result of the Sub Item accepted"/>
+		<put name="body" value="/pages/procure/store/storeOrderSubItemsResult.jsp"/>
+	</definition>	
+	
+	<!-- definition extends="base.definition" name="page.orderAcceptanceSubItemDetail">
+		<put name="title" value="Detail of the Sub Items Accepted, Purchase Order to Store"/>
+		<put name="body" value="/pages/procure/store/storeOrderSubItems.jsp"/>
+	</definition -->
+	
+	<!-- Tiles Definition of Request Materials (Items) from receiving -->
+	<definition extends="base.definition" name="page.requestMaterial">
+		<put name="title" value="Request for materials(items)"/>
+		<put name="body" value="/pages/receiving/requestMaterials.jsp"/>
+	</definition>
+	<!-- Tiles Definition of List of Request Materials (Items) from receiving -->
+	<definition extends="base.definition" name="page.requestMaterialCart">
+		<put name="title" value="Request material(items) buscate "/>
+		<put name="body" value="/pages/receiving/requestMaterialList.jsp"/>
+	</definition>
+
+	<!-- Tiles Definition of Requested Items List for approval from issuing -->
+	<definition extends="base.definition" name="page.requestedItemsList">
+		<put name="title" value="Requested items list for approval"/>
+		<put name="body" value="/pages/issuing/requestItems_list.jsp"/>
+	</definition>
+
+	<!-- Tiles Definition of Requested Item's detail from issuing-->
+	<definition extends="base.definition" name="page.requestedItemDetail">
+		<put name="title" value="Detail of requested item for approval"/>
+		<put name="body" value="/pages/issuing/requestItemDetail.jsp"/>
+	</definition>
+
+	<!-- Tiles Definition of Approved Item's List -->
+	<definition extends="base.definition" name="page.approvedItemsList">
+		<put name="title" value="List of Approved Items"/>
+		<put name="body" value="/pages/receiving/ApprovedItems_list.jsp"/>
+	</definition>
+
+	<!-- Tiles Definition of Consumption -->
+	<definition extends="base.definition" name="page.consumption">
+		<put name="title" value="Consumption of Items"/>
+		<put name="body" value="/pages/consume/consumptions.jsp"/>
+	</definition>
+	<!-- Tiles Definition of Adjustment -->
+	<definition extends="base.definition" name="page.adjustment">
+		<put name="title" value="Adjustment of Items"/>
+		<put name="body" value="/pages/adjustment/adjusments.jsp"/>
+	</definition>
+	
+	<!-- Tiles Definition of Adjustment Details -->
+	<definition extends="base.definition" name="page.adjustmentDetails">
+		<put name="title" value="Adjustment Details"/>
+		<put name="body" value="/pages/adjustment/adjustmentDetails.jsp"/>
+	</definition>
+	
+	<!-- Tiles Definition of Adjustment SubItems Details -->
+	<definition extends="base.definition" name="page.adjustmentSubItemsDetails">
+		<put name="title" value="Adjustment SubItems Details"/>
+		<put name="body" value="/pages/adjustment/adjustmentSubItemsDetails.jsp"/>
+	</definition>
+
+	<!-- Tiles Definition of Add User  -->
+	<definition extends="base.definition" name="page.adminUserAdd">
+		<put name="title" value="Add User"/>
+		<put name="body" value="/pages/user/userAdd.jsp"/>
+	</definition>
+	
+	<!-- Tiles Definition of User Update -->
+	<definition extends="base.definition" name="page.userChangePwd">
+		<put name="title" value=" User Update"/>
+		<put name="body" value="/pages/user/userChangePwd.jsp"/>
+	</definition>
+	
+	<!-- Tiles Definition of Admin User Update -->
+	<definition extends="base.definition" name="page.adminUserUpdate">
+		<put name="title" value=" User Update"/>
+		<put name="body" value="/pages/user/adminUserUpdate.jsp"/>
+	</definition>
+	
+	
+	<!-- Tiles Definition of Consume SubItems page -->
+      	<definition extends="base.definition" name="page.consumeSubitems">
+      		<put name="title" value="SubItems Consumw Details"/>
+            <put name="body" value="/pages/consume/consumptions_subItemsDetails.jsp"/>
+		</definition>
+		
+   <!-- Tiles Definition of ERROR403 page -->
+	<definition extends="base.definition" name="page.error403">
+		<put name="title" value="NO ACCESS "/>
+		<put name="body" value="/pages/template/error403.jsp"/>
+	</definition>
+	
+	 <!-- Tiles Definition of ERROR404 page -->
+	<definition extends="base.definition" name="page.error404">
+		<put name="title" value=" PAGE NOT FOUND "/>
+		<put name="body" value="/pages/template/error404.jsp"/>
+	</definition>
+		
+	<!-- REPORTING SECTION -->
+
+	<!-- Tiles Definition of Report -  -->
+	<definition extends="base.definition" name="page.report">
+		<put name="title" value="Report"/>
+		<put name="body" value="/pages/reports/report.jsp"/>
+	</definition>
+	
+	
+	<!-- Tiles Definition of Report - transaction by date -->
+	<definition extends="base.definition" name="page.report.transactionByDate">
+		<put name="title" value="ReportForm - Transaction Date Wise"/>
+		<put name="body" value="/pages/reports/transactions_date.jsp"/>
+	</definition>
+
+
+
+</tiles-definitions>

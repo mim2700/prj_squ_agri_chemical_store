@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+
+<!DOCTYPE web-app
+  PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+  "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>/WEB-INF/struts-config.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>2</param-value>
+    </init-param>
+    <init-param>
+      <param-name>detail</param-name>
+      <param-value>2</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+
+  <taglib>
+    <taglib-uri>/tags/struts-bean</taglib-uri>
+    <taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/tags/struts-html</taglib-uri>
+    <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/tags/struts-logic</taglib-uri>
+    <taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/tags/struts-nested</taglib-uri>
+    <taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>/tags/struts-tiles</taglib-uri>
+    <taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+  </taglib>
+
+  <!--
+  <taglib>
+    <taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+    <taglib-location>/WEB-INF/c.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+    <taglib-location>/WEB-INF/fmt.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>http://java.sun.com/jstl/sql</taglib-uri>
+    <taglib-location>/WEB-INF/sql.tld</taglib-location>
+  </taglib>
+
+  <taglib>
+    <taglib-uri>http://java.sun.com/jstl/x</taglib-uri>
+    <taglib-location>/WEB-INF/x.tld</taglib-location>
+  </taglib>
+  -->
+  
+  <session-config>
+       <session-timeout>30</session-timeout>
+  </session-config>
+  
+  <error-page>
+  	<error-code>403</error-code>
+    <location>/error403.do</location>
+  </error-page>
+   
+    <error-page>
+  	<error-code>404</error-code>
+    <location>/error404.do</location>
+  </error-page>
+  
+    <security-constraint>
+
+	<web-resource-collection>
+		<web-resource-name> ALL </web-resource-name>
+		<!-- Define the context-relative URL(s) to be protected -->
+		<url-pattern>/welcome.do</url-pattern>
+		<url-pattern>/checkItems.do</url-pattern>
+		<url-pattern>/orderInvitationList.do</url-pattern>
+		<url-pattern>/orderAcceptanceList.do</url-pattern>
+		<url-pattern>/orderAcceptanceItemDetail.do</url-pattern>
+		<url-pattern>/orderAcceptanceSubItemDetail.do</url-pattern>
+		<url-pattern>/consumption.do</url-pattern>
+		<url-pattern>/consumeSubitems.do</url-pattern>
+		<url-pattern>/adjustments.do</url-pattern>
+		<url-pattern>/adjustmentsDetails.do</url-pattern>
+		<url-pattern>/adjustItemsResults.do</url-pattern>
+		<url-pattern>/userChangePwd.do</url-pattern>
+		<url-pattern>/report.do</url-pattern>
+	</web-resource-collection>
+	<auth-constraint>
+		<!-- 
+			<role-name>Administrator</role-name>
+		 -->
+		<role-name>Central_Store</role-name>
+		<role-name>Department_Store</role-name>
+	</auth-constraint>
+	
+	<user-data-constraint>
+		<transport-guarantee>NONE</transport-guarantee>
+	</user-data-constraint>
+	
+	</security-constraint>
+
+<security-constraint>
+
+	<web-resource-collection>
+		<web-resource-name> Central_Store</web-resource-name>
+		<!-- Define the context-relative URL(s) to be protected -->
+		<url-pattern>/requestedItemsList.do</url-pattern>
+	</web-resource-collection>
+
+	<auth-constraint>
+		<role-name>Central_Store</role-name>
+	</auth-constraint>
+	
+	<user-data-constraint>
+		<transport-guarantee>NONE</transport-guarantee>
+	</user-data-constraint>
+	
+</security-constraint>
+
+<security-constraint>
+
+	<web-resource-collection>
+		<web-resource-name> Department_Store </web-resource-name>
+		<!-- Define the context-relative URL(s) to be protected -->
+		<url-pattern>/requestMaterials.do</url-pattern>
+		<url-pattern>/requestMaterialsCart.do</url-pattern>
+		<url-pattern>/approvedItemsList.do</url-pattern>
+	</web-resource-collection>
+
+	<auth-constraint>
+		<role-name>Department_Store</role-name>
+	</auth-constraint>
+	
+	<user-data-constraint>
+		<transport-guarantee>NONE</transport-guarantee>
+	</user-data-constraint>
+	
+</security-constraint>
+	
+<security-constraint>
+
+	<web-resource-collection>
+		<web-resource-name> Administrator </web-resource-name>
+		<!-- Define the context-relative URL(s) to be protected -->
+		
+		<url-pattern>/welcome.do</url-pattern>
+		
+		<!-- 
+			<url-pattern>/requestedItemsList.do</url-pattern>
+			<url-pattern>/requestMaterials.do</url-pattern>
+			<url-pattern>/requestMaterialsCart.do</url-pattern>
+			<url-pattern>/approvedItemsList.do</url-pattern>
+		 -->
+		 
+		<url-pattern>/adminUserAdd.do</url-pattern>
+		<url-pattern>/adminUserUpdate.do</url-pattern>
+		<url-pattern>/itemGrade.do</url-pattern>
+		<url-pattern>/itemType.do</url-pattern>
+		<url-pattern>/itemSafety.do</url-pattern>
+		
+	</web-resource-collection>
+
+	<auth-constraint>
+		<role-name>Administrator</role-name>
+	</auth-constraint>
+	
+	<user-data-constraint>
+		<transport-guarantee>NONE</transport-guarantee>
+	</user-data-constraint>
+	
+</security-constraint>
+		
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login.do</form-login-page>
+			<form-error-page>/loginFails.do</form-error-page>
+		</form-login-config>
+	</login-config>	
+
+</web-app>

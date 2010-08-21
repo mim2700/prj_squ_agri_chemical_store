@@ -1,0 +1,28 @@
+mainmenu
+	Home|/welcome.do|_self
+	Procurement|/checkItems.do|_self
+		Check|/checkItems.do|_self
+		Order Invitation List|/orderInvitationList.do|
+		Order Acceptance List|/orderAcceptanceList.do|
+	InHouse Items Receiving|/requestMaterials.do|
+		Request Form|/requestMaterials.do|
+		Approval List|/approvedItemsList.do|
+	InHouse Items Issuing|/requestedItemsList.do|
+	Consumption|/consumption.do|
+	Adjustment|/adjustments.do|
+	Reports|#|
+		Present Position|#|
+		Transactions|/rptTransactionDt.do|
+		Items|#|
+		Departments|#|
+	Admin|#|
+		User|#|
+			Create User|/adminUserAdd.do|
+			Manage User|/adminUserUpdate.do|
+		Item|#|
+			Grade|/itemGrade.do|
+			Type|/itemType.do|
+			Safety|/itemSafety.do|
+	Settings|#|
+		Change Password|/userChangePwd.do|
+	Log out|#|
